@@ -3,8 +3,8 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -22,11 +22,15 @@ public class TextBoxTests {
     @Test
     void fillFormTest() {
 
-        open("/text-box");
-        $("#userName").setValue("Denis");
+        open("/automation-practice-form");
+        $("#firstName").setValue("Denis");
+        $("#lastName").setValue("Qa");
         $("#userEmail").setValue("tester@auto.com");
-        $("#currentAddress").setValue("Sunny street 3");
-        $("#permanentAddress").setValue("Shady street 4");
+        $("#genderWrappwer").$(byText("Male")).click();
+        $("#userNumber").setValue("8910123456");
+        $("#dateOfBirthInput").setValue("15 Dec 2002");
+        $("#subjectsInput").setValue("Math");
+        $("#hobbies-checkbox-1").click();
         $("#submit").click();
 
         $("#output #name").shouldHave(text("Denis"));
